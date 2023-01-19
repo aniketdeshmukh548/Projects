@@ -46,3 +46,23 @@ let lastitem=document.querySelector(".list-group-item:nth-child(2)");
 lastitem.style.backgroundColor="yellow"
 let invisible=document.querySelector(".list-group-item:nth-child(3)");
 invisible.style.color="lightgreen"
+
+//Query Seclector All
+let lis=document.querySelectorAll(".list-group-item")
+console.log(lis)
+lis[1].style.color="pink"
+/*for(let i=0;i<lis.length;i++)
+{
+    if(i%2===0)
+    {
+        lis[i].style.backgroundColor="lightgreen";
+    }
+}*/
+//by youtuber
+let odd=document.querySelectorAll("li:nth-child(odd)")
+let even=document.querySelectorAll("li:nth-child(even)")
+for(let i=0;i<odd.length;i++)
+{
+    odd[i].style.backgroundColor="lightblue"
+    even[i].style.backgroundColor="darkgrey"
+}
