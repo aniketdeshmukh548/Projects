@@ -32,3 +32,17 @@ console.log(c[4])
 c[4].style.color="blue"
 c[4].style.backgroundColor="lightgreen";
 c[4].style.fontWeight="bold"
+
+//Query Selector
+let head=document.querySelector("#main-header");
+head.style.borderBottom="solid 5px yellow"
+let submit=document.querySelector('input[type="submit"]');
+submit.value="SEND"
+let input=document.querySelector("input");
+input.value="add text"
+let list=document.querySelector(".list-group-item")
+list.style.color="red"
+let lastitem=document.querySelector(".list-group-item:nth-child(2)");
+lastitem.style.backgroundColor="yellow"
+let invisible=document.querySelector(".list-group-item:nth-child(3)");
+invisible.style.color="lightgreen"
