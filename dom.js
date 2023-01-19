@@ -67,10 +67,12 @@ for(let i=0;i<odd.length;i++)
     //even[i].style.backgroundColor="grey"
 }  */
 
-let itemlist=document.querySelector("#items")
+/* let itemlist=document.querySelector("#items")
 //parentnode && parent element are same
 console.log(itemlist.parentNode)
 itemlist.parentNode.style.backgroundColor="lightgrey"
+//parent element
+console.log(itemlist.parentElement)
 //child node
 console.log(itemlist.childNodes)
 //children
@@ -113,4 +115,5 @@ continer.insertBefore(d,h2)
 
 let e=document.querySelector("ul .list-group-item")
 let e1=document.querySelector("ul li")
-e.insertBefore(d,e1)
+e.insertBefore(d,e1) */
+
