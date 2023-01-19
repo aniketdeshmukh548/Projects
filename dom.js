@@ -117,3 +117,53 @@ let e=document.querySelector("ul .list-group-item")
 let e1=document.querySelector("ul li")
 e.insertBefore(d,e1) */
 
+
+var form = document.getElementById('addForm');
+//console.log(form)
+var itemList = document.getElementById('items');
+//console.log(itemList)
+//delete event
+itemList.addEventListener('click' ,removeItem)
+//submit event aso caling fuction when we clicked submit
+form.addEventListener('submit', addItem);
+//create function and passing event e parameter
+function addItem(e){
+    e.preventDefault();
+    //console.log(1)
+    // Get input value
+    var newItem = document.getElementById('item').value;
+    //console.log(newItem)
+    //create new li element
+    var li=document.createElement('li')
+    //add class name
+    li.className='list-group-item'
+    //console.log(li)
+    //add text node 
+    li.appendChild(document.createTextNode(newItem))
+    //create delete button
+    var deletebtn=document.createElement('button')
+    //addd class to delete tn
+    deletebtn.className='btn btn-danger btn-sm float-right delete'
+    //add text node
+    deletebtn.appendChild(document.createTextNode('X'))
+    li.appendChild(deletebtn)
+    //since we are appending it to list
+    //adding edit button
+    var editbtn=document.createElement('button')
+    editbtn.className='btn btn-danger btn-sm float-right delete'
+    editbtn.appendChild(document.createTextNode('edit'))
+    li.appendChild(editbtn)
+    itemList.appendChild(li)
+}
+
+function removeItem(e)
+{
+    if(e.target.classList.contains('delete'))
+    {
+        if(confirm('Are U Sure'))
+        {
+            let li=e.target.parentElement;
+            itemList.removeChild(li)
+        }
+    }
+}
