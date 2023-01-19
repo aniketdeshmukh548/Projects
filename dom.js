@@ -1,4 +1,4 @@
-//BY ID
+/* //BY ID
 let headTitle = document.getElementById("header-title");
 //headTitle.textContent="aniket";
 console.log(headTitle);
@@ -17,7 +17,7 @@ console.log(b[2])
 /*b[0].style.fontWeight="bold";
 b[1].style.fontWeight="bold";
 b[2].style.fontWeight="bold";
-b[3].style.fontWeight="bold";*/
+b[3].style.fontWeight="bold";
 //for igger list use for loop
 for(let i=0;i<b.length;i++)
 {
@@ -57,12 +57,60 @@ lis[1].style.color="pink"
     {
         lis[i].style.backgroundColor="lightgreen";
     }
-}*/
+}
 //by youtuber
-let odd=document.querySelectorAll("li:nth-child(odd)")
+ let odd=document.querySelectorAll("li:nth-child(odd)")
 let even=document.querySelectorAll("li:nth-child(even)")
 for(let i=0;i<odd.length;i++)
 {
     odd[i].style.backgroundColor="lightblue"
-    even[i].style.backgroundColor="darkgrey"
-}
+    //even[i].style.backgroundColor="grey"
+}  */
+
+let itemlist=document.querySelector("#items")
+//parentnode && parent element are same
+console.log(itemlist.parentNode)
+itemlist.parentNode.style.backgroundColor="lightgrey"
+//child node
+console.log(itemlist.childNodes)
+//children
+console.log(itemlist.children)
+//to access particular child
+console.log(itemlist.children[1])
+//first child
+console.log(itemlist.firstChild)
+//first element child
+console.log(itemlist.firstElementChild)
+//last child
+console.log(itemlist.lastChild)
+//last elemt child
+console.log(itemlist.lastElementChild)
+//cretae child
+
+//next sibling
+console.log(itemlist.nextSibling)
+//next elemt sibling
+console.log(itemlist.nextElementSibling)
+//previuos sibling
+console.log(itemlist.previousSibling)
+//previous elemt sibling
+console.log(itemlist.previousElementSibling)
+//create element div
+let d=document.createElement("div")
+d.className="hello"
+d.id="bye"
+//set attribute
+d.setAttribute("value","aniket")
+//create new nnode div insilde div
+let newd=document.createTextNode("Deshmukh")
+//append child i.e to add newd to d
+d.appendChild(newd)
+
+let continer=document.querySelector("header .container")
+let h2=document.querySelector("header h1")
+console.log(d)
+continer.insertBefore(d,h2)
+
+let e=document.querySelector("ul .list-group-item")
+let e1=document.querySelector("ul li")
+e.insertBefore(d,e1)
