@@ -24,3 +24,11 @@ for(let i=0;i<b.length;i++)
     b[i].style.fontWeight="bold"
 }
 b[2].style.backgroundColor="lightgreen";
+
+
+//By TAG NAME
+let c=document.getElementsByTagName("li");
+console.log(c[4])
+c[4].style.color="blue"
+c[4].style.backgroundColor="lightgreen";
+c[4].style.fontWeight="bold"
