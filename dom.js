@@ -122,6 +122,8 @@ var form = document.getElementById('addForm');
 //console.log(form)
 var itemList = document.getElementById('items');
 //console.log(itemList)
+var itemListe = document.getElementById('iteme');
+console.log(itemListe)
 var filter = document.getElementById('filter');
 //console.log(filter)
 //delete event
@@ -130,20 +132,26 @@ itemList.addEventListener('click' ,removeItem)
 form.addEventListener('submit', addItem);
 //filter event
 filter.addEventListener('keyup' ,filterItems)
+filter.addEventListener('keyup' ,filterItemse)
 //create function and passing event e parameter
 function addItem(e){
     e.preventDefault();
     //console.log(1)
     // Get input value
     var newItem = document.getElementById('item').value;
+    var newIteme = document.getElementById('iteme').value;
     //console.log(newItem)
+    //console.log(newIteme)
     //create new li element
     var li=document.createElement('li')
+    var li=document.createElement('li')
     //add class name
+    li.className='list-group-item'
     li.className='list-group-item'
     //console.log(li)
     //add text node 
     li.appendChild(document.createTextNode(newItem))
+    li.appendChild(document.createTextNode(newIteme))
     //create delete button
     var deletebtn=document.createElement('button')
     //addd class to delete tn
@@ -158,6 +166,8 @@ function addItem(e){
     editbtn.appendChild(document.createTextNode('edit'))
     li.appendChild(editbtn)
     itemList.appendChild(li)
+    itemList.appendChild(li)
+    //console.log(itemList)
 }
 
 function removeItem(e)
@@ -174,13 +184,13 @@ function removeItem(e)
 function filterItems(e){
     // convert text to lowercase
     var text = e.target.value.toLowerCase();
-    //console.log(text)
+    console.log(text)
     //get list of items
     var items=itemList.getElementsByTagName('li');
     //convert html cllection to array
     Array.from(items).forEach(function(item){
         var itemName = item.firstChild.textContent;
-       // console.log(itemName)
+       console.log(itemName)
        if(itemName.toLowerCase().indexOf(text)!=-1)
        {
         item.style.display='block'
@@ -191,4 +201,25 @@ function filterItems(e){
        }
     });
 
+}
+
+function filterItemse(e)
+{
+    var text = e.target.value.toLowerCase();
+    console.log(text)
+    var items=itemList.getElementsByTagName('li')
+    console.log(items)
+    Array.from(items).forEach(function(item)
+    {
+        var itemName=item.childNodes[1].textContent
+        console.log(itemName)
+        if(itemName.toLowerCase().indexOf(text)!=-1)
+       {
+        item.style.display='block'
+       }
+       else
+       {
+        item.style.display='none'
+       }
+    });
 }
