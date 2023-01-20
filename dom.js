@@ -122,10 +122,14 @@ var form = document.getElementById('addForm');
 //console.log(form)
 var itemList = document.getElementById('items');
 //console.log(itemList)
+var filter = document.getElementById('filter');
+//console.log(filter)
 //delete event
 itemList.addEventListener('click' ,removeItem)
 //submit event aso caling fuction when we clicked submit
 form.addEventListener('submit', addItem);
+//filter event
+filter.addEventListener('keyup' ,filterItems)
 //create function and passing event e parameter
 function addItem(e){
     e.preventDefault();
@@ -166,4 +170,25 @@ function removeItem(e)
             itemList.removeChild(li)
         }
     }
+}
+function filterItems(e){
+    // convert text to lowercase
+    var text = e.target.value.toLowerCase();
+    //console.log(text)
+    //get list of items
+    var items=itemList.getElementsByTagName('li');
+    //convert html cllection to array
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+       // console.log(itemName)
+       if(itemName.toLowerCase().indexOf(text)!=-1)
+       {
+        item.style.display='block'
+       }
+       else
+       {
+        item.style.display='none'
+       }
+    });
+
 }
