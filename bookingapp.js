@@ -35,7 +35,7 @@
 } */
 
 //GETTING MULTIPLE USER DATA TO STORE IN LOCAL STORAGE
-function getDetails() {
+/* function getDetails() {
     var fname = document.getElementById("name").value;
     var emailadd = document.getElementById("email").value;
     var phoneno = document.getElementById("phone").value;
@@ -61,4 +61,32 @@ function getDetails() {
     else{
         alert("Ooopppssss... Duplicate found!!!\nYou have already sigjned up");
     }
+} */
+
+//by watching hint video
+function getDetails()
+{
+    var fname = document.getElementById("name").value;
+    var emailadd = document.getElementById("email").value;
+    var phoneno = document.getElementById("phone").value;
+    var d = document.getElementById("date").value;
+    var t = document.getElementById("time").value;
+    let myObj = {
+        name: fname,
+        email: emailadd,
+        phone: phoneno,
+        date: d,
+        time: t,
+    }
+    let myObj_searlized = JSON.stringify(myObj)
+    localStorage.setItem("userdetails", myObj_searlized)
+    showonScreen(myObj_searlized)
+}
+function showonScreen(myObj_searlized)
+{
+    let parentEleme=document.getElementById("listOfitems")
+    parentEleme.innerHTML= parentEleme.innerHTML+ `<li>${myObj_searlized.name}-${myObj_searlized.email}-${myObj_searlized.phone}</li>`
+    //let chidelem=document.createElement('li')
+    //chidelem.textContent=myObj_searlized.name+" "+myObj_searlized.name+" "+myObj_searlized.email+" "+myObj_searlized.phone+" "+myObj_searlized.d+" "+myObj_searlized.t
+    //parentEleme.appendChild(chidelem)
 }
