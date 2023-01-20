@@ -64,7 +64,7 @@
 } */
 
 //by watching hint video
-function getDetails()
+/* function getDetails()
 {
     var fname = document.getElementById("name").value;
     var emailadd = document.getElementById("email").value;
@@ -89,4 +89,4 @@ function showonScreen(myObj_searlized)
     //let chidelem=document.createElement('li')
     //chidelem.textContent=myObj_searlized.name+" "+myObj_searlized.name+" "+myObj_searlized.email+" "+myObj_searlized.phone+" "+myObj_searlized.d+" "+myObj_searlized.t
     //parentEleme.appendChild(chidelem)
-}
+} */
