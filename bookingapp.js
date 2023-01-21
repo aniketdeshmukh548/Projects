@@ -90,3 +90,41 @@ function showonScreen(myObj_searlized)
     //chidelem.textContent=myObj_searlized.name+" "+myObj_searlized.name+" "+myObj_searlized.email+" "+myObj_searlized.phone+" "+myObj_searlized.d+" "+myObj_searlized.t
     //parentEleme.appendChild(chidelem)
 } */
+
+
+function savetoLocalStorage(event)
+{
+    event.preventDefault();
+    var fname=event.target.name.value;
+    var emailadd=event.target.email.value;
+    var phoneno=event.target.phone.value;
+    var d=event.target.date.value;
+    var t=event.target.time.value;
+    const obj={
+        fname,
+        emailadd,phoneno,d,t
+    }
+    localStorage.setItem(obj.emailadd ,JSON.stringify(obj))
+    showUsersonscreen(obj)
+
+}
+function showUsersonscreen(obj)
+{
+    let parentEleme=document.getElementById('listOfitems')
+    let chidelem=document.createElement('li')
+    let littlechild=document.createElement('button')
+    chidelem.textContent=obj.fname+" "+obj.emailadd+" "+obj.phoneno+" "+obj.d+" "+obj.t
+    littlechild.setAttribute('id','delete-btn')
+    littlechild.innerText="Delete"
+    parentEleme.appendChild(chidelem)
+    parentEleme.appendChild(littlechild)
+    littlechild.addEventListener('click' ,function(deleteevent)
+    {
+        if(deleteevent.target.id=='delete-btn')
+        {
+            chidelem.remove('li')
+            littlechild.remove('buttton')
+            localStorage.removeItem(obj.emailadd,JSON.stringify(obj))
+        }
+    })
+}
