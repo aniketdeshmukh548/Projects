@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="expense.css">
+</head>
+
+<body>
+        <header>
+            <h1>Expense Tracker</h1>
+        </header>
+
+        <section class="container">
+            <form id="my-form" onsubmit="getDetails(event)">
+                <!--<h1>Add User Details</h1>
+                <button class="dropbtn">Dropdown</button>-->
+                <div>
+                    <label>Choose Expense</label>
+                <input type="number" id="num">
+                </div>
+                <div>
+                    <label>Choose Description</label>
+                    <input type="text" id="descp">
+                </div>
+                <div>
+                    <label for="">Choose a category</label>
+                    <input type="text" id="cat">
+                </div>
+                <input class="btn" type="submit" value="Add Expense">
+            </form>
+            <ul id='listOfitems'>
+            </ul>
+
+<script src="expense.js"></script>
+</body>
+
+</html>
