@@ -128,8 +128,8 @@ function showUsersonscreen(obj)
         }
     })
 } */
-
-function savetoLocalStorage(event) {
+////////////******TO STORE IN LOCAL STORAGE */
+/* function savetoLocalStorage(event) {
     event.preventDefault();
     var fname = event.target.name.value;
     var emailadd = event.target.email.value;
@@ -142,6 +142,69 @@ function savetoLocalStorage(event) {
     }
     localStorage.setItem(obj.emailadd, JSON.stringify(obj))
     showUsersonscreen(obj)
+
+}
+function showUsersonscreen(obj) {
+    let parentEleme = document.getElementById('listOfitems')
+    let chidelem = document.createElement('li')
+    let editchild = document.createElement('button')
+    let littlechild = document.createElement('button')
+    chidelem.textContent = obj.fname + " " + obj.emailadd + " " + obj.phoneno + " " + obj.d + " " + obj.t
+    littlechild.setAttribute('id', 'delete-btn')
+    littlechild.innerText = "Delete"
+    editchild.setAttribute('id', 'edit-btn')
+    editchild.innerText = "Edit"
+    parentEleme.appendChild(chidelem)
+    parentEleme.appendChild(editchild)
+    parentEleme.appendChild(littlechild)
+    littlechild.addEventListener('click', function (deleteevent) {
+        if (deleteevent.target.id == 'delete-btn') {
+            chidelem.remove('li')
+            littlechild.remove('buttton')
+            editchild.remove('button')
+            localStorage.removeItem(obj.emailadd, JSON.stringify(obj))
+        }
+    })
+    editchild.addEventListener('click', function (editevent) {
+        if (editevent.target.id == 'edit-btn') {
+            const span=ul.firstElementChild;
+            const input=document.createElement('input');
+            input.type='text';
+            input.value=span.textContent;
+            li.insertBefore(input,span)
+            li.removeChild(span)
+            chidelem.remove('li')
+            littlechild.remove('buttton')
+            editchild.remove('button')
+            localStorage.removeItem(obj.emailadd, JSON.stringify(obj))
+
+        }
+    })
+} */
+///////*******TO STORE ON CLOUD USING CRUD CRUD */
+function savetoLocalStorage(event) {
+    event.preventDefault();
+    var fname = event.target.name.value;
+    var emailadd = event.target.email.value;
+    var phoneno = event.target.phone.value;
+    var d = event.target.date.value;
+    var t = event.target.time.value;
+    const obj = {
+        fname,
+        emailadd, phoneno, d, t
+    }
+    axios.post("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData",obj)
+    .then((response)=>
+    {
+        showUsersonscreen(response.data)
+        console.log(response);
+    })
+    .catch((e)=>
+    {
+        console.log(e);
+    })
+    //localStorage.setItem(obj.emailadd, JSON.stringify(obj))
+    //showUsersonscreen(obj)
 
 }
 function showUsersonscreen(obj) {
