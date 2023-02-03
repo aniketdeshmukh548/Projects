@@ -193,7 +193,7 @@ function savetoLocalStorage(event) {
         fname,
         emailadd, phoneno, d, t
     }
-    axios.post("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData",obj)
+    axios.post("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData",obj)
     .then((response)=>
     {
         showUsersonscreen(response.data)
@@ -209,7 +209,7 @@ function savetoLocalStorage(event) {
 }
 window.addEventListener("DOMContentLoaded",()=>
 {
-    axios.get("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData")
+    axios.get("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData")
     .then((response)=>
     {
         //showUsersonscreen(response.data)
@@ -238,9 +238,9 @@ window.addEventListener("DOMContentLoaded",()=>
 })
 
 //delete user from crud crud
-window.addEventListener('DOMContentLoaded',()=>
+window.addEventListener('DOMContentLoaded',(id)=>
 {
-    axios.delete("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData/63dc853f07307e03e8c786db")
+    axios.delete("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData/${id}.json")
     .then((response)=>
     {
         //showUsersonscreen(response.data)
