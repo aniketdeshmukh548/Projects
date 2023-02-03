@@ -207,6 +207,35 @@ function savetoLocalStorage(event) {
     //showUsersonscreen(obj)
 
 }
+window.addEventListener("DOMContentLoaded",()=>
+{
+    axios.get("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData")
+    .then((response)=>
+    {
+        //showUsersonscreen(response.data)
+        console.log(response);
+        for(var i=0;i<response.data.length;i++)
+        {
+            showUsersonscreen(response.data[i]);
+        }
+    })
+    .catch((e)=>
+    {
+        console.log(e);
+    })  
+    
+    //below code for getting data from local storage.
+    // const localStorageObj=localStorage;
+    // const localStorageKeys=Object.keys(localStorageObj)
+
+    // for(var i=0;i<localStorageKeys.length;i++)
+    // {
+    //     const key=localStorageKeys[i];
+    //     const userdetailsString=localStorageObj[key];
+    //     const userdetailsObj=JSON.parse(userdetailsString);
+    //     showUsersonscreen(userdetailsObj)
+    // }
+})
 function showUsersonscreen(obj) {
     let parentEleme = document.getElementById('listOfitems')
     let chidelem = document.createElement('li')
