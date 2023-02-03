@@ -236,6 +236,23 @@ window.addEventListener("DOMContentLoaded",()=>
     //     showUsersonscreen(userdetailsObj)
     // }
 })
+
+//delete user from crud crud
+window.addEventListener('DOMContentLoaded',()=>
+{
+    axios.delete("https://crudcrud.com/api/54317958fa6443dbaa3105137b15672a/appointmentData/63dc853f07307e03e8c786db")
+    .then((response)=>
+    {
+        //showUsersonscreen(response.data)
+        console.log(response);
+    })
+    .catch((e)=>
+    {
+        console.log(e);
+    }) 
+})
+
+ //
 function showUsersonscreen(obj) {
     let parentEleme = document.getElementById('listOfitems')
     let chidelem = document.createElement('li')
@@ -272,4 +289,4 @@ function showUsersonscreen(obj) {
 
         }
     })
-}
+} 
