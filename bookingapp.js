@@ -238,9 +238,9 @@ window.addEventListener("DOMContentLoaded",()=>
 })
 
 //delete user from crud crud
-window.addEventListener('DOMContentLoaded',(id)=>
+/* window.addEventListener('DOMContentLoaded',(userID)=>
 {
-    axios.delete("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData/${id}.json")
+    axios.delete("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData/${userId}")
     .then((response)=>
     {
         //showUsersonscreen(response.data)
@@ -250,12 +250,13 @@ window.addEventListener('DOMContentLoaded',(id)=>
     {
         console.log(e);
     }) 
-})
+}) */
 
  //
 function showUsersonscreen(obj) {
     let parentEleme = document.getElementById('listOfitems')
     let chidelem = document.createElement('li')
+    chidelem.setAttribute('id','obj._id')
     let editchild = document.createElement('button')
     let littlechild = document.createElement('button')
     chidelem.textContent = obj.fname + " " + obj.emailadd + " " + obj.phoneno + " " + obj.d + " " + obj.t
@@ -267,26 +268,31 @@ function showUsersonscreen(obj) {
     parentEleme.appendChild(editchild)
     parentEleme.appendChild(littlechild)
     littlechild.addEventListener('click', function (deleteevent) {
-        if (deleteevent.target.id == 'delete-btn') {
+        if (deleteevent.target.id == 'delete-btn' && 'obj._id') {
             chidelem.remove('li')
             littlechild.remove('buttton')
             editchild.remove('button')
-            localStorage.removeItem(obj.emailadd, JSON.stringify(obj))
+            axios.delete("https://crudcrud.com/api/d316e6bd2f9c4d1eba6ba5b266e7c92d/appointmentData/{obj._id}")
+            .then((response)=>
+            {
+                chidelem.remove('li')
+                littlechild.remove('buttton')
+                editchild.remove('button')
+                console.log(response)
+            })
+            .catch((e)=>
+            {
+                console.log(e);
+            }) 
+           // localStorage.removeItem(obj.emailadd, JSON.stringify(obj))
         }
     })
-    editchild.addEventListener('click', function (editevent) {
-        if (editevent.target.id == 'edit-btn') {
-            const span=ul.firstElementChild;
-            const input=document.createElement('input');
-            input.type='text';
-            input.value=span.textContent;
-            li.insertBefore(input,span)
-            li.removeChild(span)
+    editchild.addEventListener('click', function (fname,emailadd,phoneno) {
+            document.getElementById('name').value=obj.fname;
+            document.getElementById('email').value=obj.emailadd;
+            document.getElementById('phone').value=obj.phoneno;
             chidelem.remove('li')
             littlechild.remove('buttton')
             editchild.remove('button')
-            localStorage.removeItem(obj.emailadd, JSON.stringify(obj))
-
-        }
     })
-} 
+}
