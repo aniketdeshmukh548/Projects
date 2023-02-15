@@ -1,4 +1,4 @@
-function addProducts(event) {
+async function addProducts(event) {
     event.preventDefault()
     let sellprice = event.target.sp.value;
     let prodname = event.target.pn.value;
@@ -6,26 +6,46 @@ function addProducts(event) {
         sellprice,
         prodname,
     }
-    axios.post("https://crudcrud.com/api/26ba5ecd59ab4008b5a22ffa5e4041ae/Products", obj)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((e) => {
-            console.log(e);
-        })
-    showProductsonScreen(obj)
+    // axios.post("https://crudcrud.com/api/45a5e78ac7aa43128828ebbe3364885f/Products", obj)
+    //     .then((response) => {
+    //         console.log(response);
+    //     })
+    //     .catch((e) => {
+    //         console.log(e);
+    //     })
+    // showProductsonScreen(obj)
+    //using async wait
+    try {
+        let res=await axios.post("https://crudcrud.com/api/01e10e9702a14f66aa813357f6d71c11/Productsdata",obj)
+        showProductsonScreen(res.data)
+        console.log(res)
+    } catch (error) {
+        console.log(error);
+    }
 }
-window.addEventListener("DOMContentLoaded", () => {
-    axios.get("https://crudcrud.com/api/26ba5ecd59ab4008b5a22ffa5e4041ae/Products")
-        .then((response) => {
-            console.log(response);
-            for (var i = 0; i < response.data.length; i++) {
-                showProductsonScreen(response.data[i]);
-            }
-        })
-        .catch((e) => {
-            console.log(e);
-        })
+window.addEventListener("DOMContentLoaded", async() => {
+    try {
+        const res=await axios.get("https://crudcrud.com/api/01e10e9702a14f66aa813357f6d71c11/Productsdata")
+        for(var i = 0;i<res.data.length;i++)
+    {
+        showProductsonScreen(res.data[i])
+    }
+    console.log(res)
+        
+    } catch (error) {
+        consol.log(error)
+        
+    }
+    // axios.get("https://crudcrud.com/api/45a5e78ac7aa43128828ebbe3364885f/Products")
+    //     .then((response) => {
+    //         console.log(response);
+    //         for (var i = 0; i < response.data.length; i++) {
+    //             showProductsonScreen(response.data[i]);
+    //         }
+    //     })
+    //     .catch((e) => {
+    //         console.log(e);
+    //     })
 })
 function addedProducts(obj) {
     let parentEleme = document.getElementById('listOfProducts')
@@ -43,27 +63,29 @@ function addedProducts(obj) {
     parentEleme.append(chidelem)
     chidelem.append(deleteElem)
 }
+let total=0;
 function totalofProducts(obj) {
     let b = document.getElementById('add')
-    let arr = [];
-    arr.push(obj.sellprice)
-    console.log(arr)
-    var sum = 0;
-    for (i = 0; i < arr.length; i++) {
-        sum += arr[i];
-    }
-    b.textContent = sum;
+    total=total+parseInt(obj.sellprice)
+    b.textContent = total;
 }
-function deleteprod(obj) {
-    axios.delete(`https://crudcrud.com/api/26ba5ecd59ab4008b5a22ffa5e4041ae/Products/${obj._id}`)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((e) => {
-            console.log(e);
-        })
+async function deleteprod(obj) {
+    try {
+        const res= axios.delete(`https://crudcrud.com/api/01e10e9702a14f66aa813357f6d71c11/Productsdata/${obj._id}`)
+        console.log(res)
+    } catch (error) {
+        console.log(error)
+    }
+    // axios.delete(`https://crudcrud.com/api/45a5e78ac7aa43128828ebbe3364885f/Products/${obj._id}`)
+    //     .then((response) => {
+    //         console.log(response);
+    //     })
+    //     .catch((e) => {
+    //         console.log(e);
+    //     })
 }
 function showProductsonScreen(obj) {
     addedProducts(obj)
     totalofProducts(obj)
+    localStorage.setItem(obj.sellprice, JSON.stringify(obj))
 }
